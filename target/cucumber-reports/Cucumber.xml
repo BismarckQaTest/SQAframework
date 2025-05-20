@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="57.597">
+    <testcase classname="Ensure laboratory result have been reviewed before medication can be administered" name="Add a confirmation that the lab results have been reviewed by the user before administering a medication" time="55.09">
+        <system-out><![CDATA[Given I open the Baxter website.............................................passed
+And I try to login with "login_baxter" credentials..........................passed
+And I login successful......................................................passed
+When I select the patient "Ape1_1838 Ape2_1838, Nom_1838 - 1838"............passed
+And I open HD Treatment module..............................................passed
+Then I try in the pop-up window, administer the medication, confirm with the checkbox, review the lab results, and then add.passed
+]]></system-out>
+    </testcase>
+</testsuite>
