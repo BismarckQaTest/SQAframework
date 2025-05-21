@@ -140,6 +140,69 @@ public abstract class BasePage <P>{
         actions.moveToElement(to).release().build().perform();
     }
 
+    public void dragAndDrop2(WebElement from, WebElement to) throws InterruptedException {
+        Actions actions = new Actions(driver);
+
+        waitElement(from);
+        actions.clickAndHold(from).perform();
+        pause(1000);
+
+        // Usar JS para mover al centro del target
+        String script = "var rect = arguments[0].getBoundingClientRect();" +
+                "window.scrollTo(rect.left + rect.width/2, rect.top + rect.height/2);";
+        ((JavascriptExecutor) driver).executeScript(script, to);
+
+        waitElement(to);
+        actions.moveToElement(to).pause(Duration.ofMillis(500)).release().build().perform();
+    }
+
+    public void dragAndDropVisible(WebElement from, WebElement to) throws InterruptedException {
+        String jsDragAndDrop = """
+        function triggerDragAndDrop(source, target) {
+            const dataTransfer = new DataTransfer();
+           
+            const dragStartEvent = new DragEvent('dragstart', {
+                bubbles: true,
+                cancelable: true,
+                dataTransfer
+            });
+            source.dispatchEvent(dragStartEvent);
+           
+            const dragOverEvent = new DragEvent('dragover', {
+                bubbles: true,
+                cancelable: true,
+                dataTransfer
+            });
+            target.dispatchEvent(dragOverEvent);
+           
+            const dropEvent = new DragEvent('drop', {
+                bubbles: true,
+                cancelable: true,
+                dataTransfer
+            });
+            target.dispatchEvent(dropEvent);
+
+            const dragEndEvent = new DragEvent('dragend', {
+                bubbles: true,
+                cancelable: true,
+                dataTransfer
+            });
+            source.dispatchEvent(dragEndEvent);
+        }
+
+        triggerDragAndDrop(arguments[0], arguments[1]);
+    """;
+
+        // Scroll to both elements to make the action visible
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", from);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", to);
+        pause(1000); // visual pause
+
+        // Execute the drag and drop via JavaScript
+        ((JavascriptExecutor) driver).executeScript(jsDragAndDrop, from, to);
+        pause(1000); // give time for any UI changes to apply
+    }
+
 
 
 
@@ -228,5 +291,25 @@ public abstract class BasePage <P>{
     protected <T> P pause(int i) throws InterruptedException {
         Thread.sleep(1000);
         return (P)this;
+    }
+
+    public void clickBelowElementByOffset(WebElement referenceElement, int offsetY) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String script = """
+        var rect = arguments[0].getBoundingClientRect();
+        var x = rect.left + (rect.width / 2);
+        var y = rect.top + (rect.height / 2) + arguments[1];
+
+        var clickEvent = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+            clientX: x,
+            clientY: y
+        });
+
+        document.elementFromPoint(x, y).dispatchEvent(clickEvent);
+    """;
+        js.executeScript(script, referenceElement, offsetY);
     }
 }

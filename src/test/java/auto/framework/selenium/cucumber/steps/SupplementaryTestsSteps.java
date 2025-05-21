@@ -104,6 +104,7 @@ public class SupplementaryTestsSteps {
     public void iCheckThatTheNewTestAddedCorrectlyWithDescriptionQATestEdit() throws InterruptedException {
         SupplementaryTestsSteps.isDisplayedDescriptionEdit();
 
+
     }
 
     @And("I add all data correctly for add the complementary test with the data record {string} the reception date {string} description {string}")
@@ -192,5 +193,256 @@ public class SupplementaryTestsSteps {
     @Then("The test deleted correctly")
     public void theTestDeletedCorrectly() throws InterruptedException {
         SupplementaryTestsSteps.noDataFoundDisplayed();
+    }
+
+    @Then("I will be able to view all the category records")
+    public void iWillBeAbleToViewAllTheCategoryRecords()throws InterruptedException{
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+
+    }
+
+
+    @Then("I will be able to view all the tests records")
+    public void iWillBeAbleToViewAllTheTestsRecords()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonTests();
+    }
+
+    @Then("I will be able to view all the categories tests records")
+    public void iWillBeAbleToViewAllTheCategoriesTestsRecords()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonCategoriesTests();
+    }
+
+    @Then("I try to add a new category of complementary tests, but I cancel the add")
+    public void iTryToAddANewCategoryOfComplementaryTestsButICancelTheAdd()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonAddCategory();
+        SupplementaryTestsSteps.inputDataAddCategory();
+        SupplementaryTestsSteps.clickButtonCancelAddNewCategory();
+    }
+
+    @Then("I successfully created a new Category")
+    public void iSuccessfullyCreatedANewCategory()throws InterruptedException {
+
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonAddCategory();
+        SupplementaryTestsSteps.inputDataAddCategory();
+        SupplementaryTestsSteps.clickButtonSaveAddNewCategory();
+    }
+
+    @Then("I try to duplicate a category, but I get a warning that it is not possible")
+    public void iTryToDuplicateACategoryButIGetAWarningThatItIsNotPossible()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonEditCategory();
+        SupplementaryTestsSteps.inputDataAddCategory();
+        SupplementaryTestsSteps.clickButtonSaveAddNewCategoryAcceptAlert();
+
+    }
+
+    @Then("I try to delete a category, but it cancels")
+    public void iTryToDeleteACategoryButItCancels()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonDeleteCategoryAndCancel();
+
+    }
+
+    @Then("I successfully deleted the selected category")
+    public void iTryToDeleteACategoryAllIsOk()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonDeleteCategoryAndAccept();
+    }
+
+    @Then("I try to delete a category, but it cancels it")
+    public void iTryToDeleteACategoryButItCancelsIt()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonDeleteCategoryAndDismiss();
+    }
+
+    @Then("I trying to delete a related category, but the warning says it's not possible")
+    public void iTryingToDeleteARelatedCategoryButTheWarningSaysItSNotPossible()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonDeleteCategoryTest1();
+
+    }
+
+    @Then("I try to create a new supplementary test, but I select cancel")
+    public void iTryToCreateANewSupplementaryTestButISelectCancel()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonTests();
+        SupplementaryTestsSteps.clickButtonAddTest();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.inputDataAddTest();
+        SupplementaryTestsSteps.clickButtonCancelAddNewCategory();
+    }
+
+    @Then("I created the Supplementary Test successfully")
+    public void iCreatedTheSupplementaryTestSuccessfully()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonTests();
+        SupplementaryTestsSteps.clickButtonAddTest();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.inputDataAddTest();
+        SupplementaryTestsSteps.clickButtonSaveAddNewCategory();
+    }
+
+    @Then("I am trying to duplicate a saved Test, but The system will not save the new supplementary test")
+    public void iAmTryingToDuplicateASavedTestButTheSystemWillNotSaveTheNewSupplementaryTest()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonTests();
+        SupplementaryTestsSteps.clickButtonAddTest();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.inputDataAddTest();
+        SupplementaryTestsSteps.clickButtonSaveAddNewCategoryAcceptAlert();
+    }
+
+    @Then("I try to delete the supplementary test, but I cancel deleting")
+    public void iTryToDeleteTheSupplementaryTestButICancelDeleting()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonTests();
+        SupplementaryTestsSteps.clickButtonIncrease();
+        SupplementaryTestsSteps.clickButtonDeleteQaTestAndCancel();
+    }
+
+    @Then("I successfully removed the Supplementary Test")
+    public void iSuccessfullyRemovedTheSupplementaryTest()throws InterruptedException{
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonTests();
+        SupplementaryTestsSteps.clickButtonIncrease();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.clickButtonDeleteQaTestAndAccept();
+    }
+
+    @Then("I try to delete the referenced complementary test, but the system does not allow it.")
+    public void iTryToDeleteTheReferencedComplementaryTestButTheSystemDoesNotAllowIt()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonTests();
+        SupplementaryTestsSteps.clickButtonIncrease();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.clickButtonDeleteQaTestAndAccept();
+    }
+
+    @Then("I try to edit the selected category, but I cancel it")
+    public void iTryToEditTheSelectedCategoryButICancelIt()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonEditCategoryTest3();
+        SupplementaryTestsSteps.inputDataEditCategory();
+        SupplementaryTestsSteps.clickButtonCancelAddNewCategory();
+
+
+    }
+
+    @Then("I try to Edit by duplicating a category, but the system shows an alert that it is not possible")
+    public void iTryToEditByDuplicatingACategoryButTheSystemShowsAnAlertThatItIsNotPossible()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonEditCategoryTest3();
+        SupplementaryTestsSteps.inputDataEditCategory();
+        SupplementaryTestsSteps.clickButtonSaveAddNewCategoryAcceptAlert();
+    }
+
+    @Then("I edit the category successfully")
+    public void iEditTheCategorySuccessfully()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonEditCategoryTest3();
+        SupplementaryTestsSteps.inputDataEditedCategory();
+        SupplementaryTestsSteps.clickButtonSaveAddNewCategory();
+    }
+
+    @Then("I try to edit the supplementary test, but the editing is cancelled")
+    public void iTryToEditTheSupplementaryTestButTheEditingIsCancelled() throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonTests();
+        SupplementaryTestsSteps.clickButtonIncrease();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.clickButtonEditTestSelected();
+        SupplementaryTestsSteps.inputDataEditTest();
+        SupplementaryTestsSteps.clickButtonCancelAddNewCategory();
+    }
+
+    @Then("I try to edit the complementary test by duplicating it, but the system shows an alert that it is not possible")
+    public void iTryToEditTheComplementaryTestByDuplicatingItButTheSystemShowsAnAlertThatItIsNotPossible() throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonTests();
+        SupplementaryTestsSteps.clickButtonIncrease();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.clickButtonEditTestSelected();
+        SupplementaryTestsSteps.inputDataDoubletTest();
+        SupplementaryTestsSteps.clickButtonSaveAddNewCategoryAcceptAlert();
+
+    }
+
+    @Then("I successfully modified the complementary test")
+    public void iSuccessfullyModifiedTheComplementaryTest()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonTests();
+        SupplementaryTestsSteps.clickButtonIncrease();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.clickButtonEditTestSelected();
+        SupplementaryTestsSteps.inputDataEditTest();
+        SupplementaryTestsSteps.clickButtonSaveAddNewCategory();
+    }
+
+    @Then("I drag and drop any test from the left grid to the right")
+    public void iDragAndDropAnyTestFromTheLeftGridToTheRight()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonCategoriesTests();
+        SupplementaryTestsSteps.clickButtonDropDownTestCategory();
+        SupplementaryTestsSteps.dragAndDropFromLeft();
+    }
+
+    @Then("I Drag and drop the test from right to left")
+    public void iDragAndDropTheTestFromRightToLeft()throws InterruptedException {
+        SupplementaryTestsSteps.clickButtonTestComplementaryConfig();
+        SupplementaryTestsSteps.clickButtonArrowUp();
+        SupplementaryTestsSteps.verifyTest1IsDisplayed();
+        SupplementaryTestsSteps.clickButtonCategoriesTests();
+        SupplementaryTestsSteps.clickButtonDropDownTestCategory();
+        SupplementaryTestsSteps.dragAndDropLeftToRight();
     }
 }

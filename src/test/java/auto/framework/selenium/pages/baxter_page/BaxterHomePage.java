@@ -135,6 +135,9 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
     @FindBy(how = How.XPATH, using = "//a[contains(.,'Configuration')]")
     private WebElement optionConfigurationMenu;
 
+    @FindBy(how = How.XPATH, using = "//h2[contains(.,'New patient')]")
+    private WebElement titleNewPatientConfigurationModule;
+
 
 
     //*********Page Methods*********
@@ -207,12 +210,12 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
 
     }
 
-    public void clickHospitalization() {
-
+    public void clickHospitalization()throws InterruptedException {
+        pause(500);
         do{
             click(rightArrow);
         }while (!isDisplayed(HospitalizationModule));
-
+        pause(500);
         click(this.HospitalizationModule);
 
     }
@@ -297,6 +300,8 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
         click(rightArrow);
         click(this.HDPrescriptionModule);
     }
+
+
     public void clickHDCalendar() throws InterruptedException {
         pause(2000);
         click(rightArrow);
@@ -401,6 +406,17 @@ public class BaxterHomePage extends BasePage<BaxterHomePage> {
         pause(300);
         click(this.optionConfigurationMenu);
         pause(4000);
+    }
+
+    public void verifyThatTheUserConfigurationOpenedCorrectly()throws InterruptedException{
+        pause(1000);
+        driver.switchTo().frame("frmContenido");
+        driver.switchTo().frame("iframeV2");
+        waitElements(this.titleNewPatientConfigurationModule);
+        isDisplayed(this.titleNewPatientConfigurationModule);
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+
     }
 
 

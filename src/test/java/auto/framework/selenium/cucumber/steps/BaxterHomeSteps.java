@@ -94,7 +94,7 @@ public class BaxterHomeSteps {
     }
 
     @When("I open Hospitalization module")
-    public void iOpenLabHospitalizationModule() {
+    public void iOpenLabHospitalizationModule()throws InterruptedException {
         BaxterHomePage.clickHospitalization();
     }
 
@@ -137,6 +137,7 @@ public class BaxterHomeSteps {
 
     @When("I open HD Prescription module")
     public void iOpenHDPrescriptionModule() throws InterruptedException {BaxterHomePage.clickHDPrescription();}
+
 
     @When("I open HD Calendar module")
     public void iOpenHDCalendarModule() throws InterruptedException {BaxterHomePage.clickHDCalendar();}
@@ -189,12 +190,9 @@ public class BaxterHomeSteps {
     }
 
 
+    @And("I verify that the user configuration opened correctly")
+    public void iVerifyThatTheUserConfigurationOpenedCorrectly()throws InterruptedException {
+        BaxterHomePage.verifyThatTheUserConfigurationOpenedCorrectly();
 
-
-
-
-
-
-
-
+    }
 }

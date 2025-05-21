@@ -96,6 +96,88 @@ public class SupplementaryTestsModulePage extends BasePage<SupplementaryTestsMod
 
     @FindBy(how = How.XPATH, using = "//*[@id=\"menuRepeaterPanel\"]/div/div/div[1]")
     private WebElement leftButton;
+    @FindBy(how = How.XPATH, using = "//span[@class='rpText'][contains(.,'P. Complementarias')]")
+    private WebElement buttonComplementaryTestOption;
+
+    @FindBy(how = How.XPATH, using = "//a[@href='#0'][contains(.,'Top')]")
+    private WebElement buttonArrowUp;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(@id,'lblnomCat')][contains(.,'Test1')]")
+    private WebElement categoryTest1;
+
+    @FindBy(how = How.XPATH, using = "(//span[@class='rtsTxt'][contains(.,'Tests')])[1]")
+    private WebElement buttonTests;
+
+    @FindBy(how = How.XPATH, using = "//span[@class='rtsTxt'][contains(.,'Categories - Tests')]")
+    private WebElement buttonCategoriesTests;
+
+    @FindBy(how = How.XPATH, using = "(//input[contains(@id,'ImageButton5')])[1]")
+    private WebElement buttonAddCategory;
+
+    @FindBy(how = How.XPATH, using = "(//input[contains(@type,'text')])[1]")
+    private WebElement inputNameAddCategory;
+
+    @FindBy(how = How.XPATH, using = "(//input[@type='text'])[1]")
+    private WebElement inputNameAddTest;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@name,'descripcion')]")
+    private WebElement inputDescriptionAddCategory;
+
+    @FindBy(how = How.XPATH, using = "(//input[contains(@type,'text')])[2]")
+    private WebElement inputDescriptionAddTest;
+
+    @FindBy(how = How.XPATH, using = "//input[@alt='Cancelar']")
+    private WebElement buttonCancelAddNewCategory;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@alt,'Guardar')]")
+    private WebElement buttonSaveAddNewCategory;
+
+    @FindBy(how = How.XPATH, using = "(//input[@alt='Editar'])[2]")
+    private WebElement buttonEditCategory;
+    @FindBy(how = How.XPATH, using = "(//input[@alt='Editar'])[4]")
+    private WebElement buttonEditCategoryTest3;
+
+    @FindBy(how = How.XPATH, using = "(//input[contains(@alt,'Eliminar')])[4]")
+    private WebElement buttonDeleteCategory;
+
+    @FindBy(how = How.XPATH, using = "(//input[contains(@alt,'Eliminar')])[2]")
+    private WebElement buttonDeleteTest1;
+
+    @FindBy(how = How.XPATH, using = "(//input[@alt='Nuevo Registro'])[2]")
+    private WebElement buttonAddNewTest;
+
+    @FindBy(how = How.XPATH, using = "/html/body/form/div[3]/div[2]/div[4]/div[2]/div/table/tfoot/tr[2]/td/table/tbody/tr/td/div[1]/div[1]/div/a[2]")
+    private WebElement buttonIncrease;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(.,'ATestQA')]")
+    private WebElement testNameQaTest;
+
+    @FindBy(how = How.XPATH, using = "(//input[contains(@alt,'Eliminar')])[5]")
+    private WebElement buttonDeleteQaTest;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(.,'ATestQA')]")
+    private WebElement nameEditTest;
+
+    @FindBy(how = How.XPATH, using = "(//input[@alt='Editar'])[5]")
+    private WebElement buttonEditTestSelected;
+
+    @FindBy(how = How.XPATH, using = "//input[contains(@value,'Qa test')]")
+    private WebElement inputDescriptionTestSelected;
+
+    @FindBy(how = How.XPATH, using = "//td[@class='rcbArrowCell rcbArrowCellRight']//a[1]")
+    private WebElement dropDownTestCategory;
+
+    @FindBy(how = How.XPATH, using = "(//ul[@class='rcbList']//li)[2]")
+    private WebElement optionTestCategory;
+
+    @FindBy(how = How.XPATH, using = "(//td[@class='rgSorted'])[2]")
+    private WebElement citologiaExamination;
+
+    @FindBy(how = How.XPATH, using = "//tr[@class='rgNoRecords']//div[1]")
+    private WebElement areaDrop;
+
+    @FindBy(how = How.XPATH, using = "//tr[@id='ctl00_mainContent_rgPruebasRelacionadas_ctl00__0']//td[1]")
+    private WebElement citologiaInAreaDrop;
     /*Methods*/
 
 
@@ -328,7 +410,361 @@ public class SupplementaryTestsModulePage extends BasePage<SupplementaryTestsMod
         click(buttonConfirmDelete);
         driver.switchTo().parentFrame();
     }
+    public void clickButtonTestComplementaryConfig()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(500);
+        scrollToElementMove(buttonComplementaryTestOption);
+        click(buttonComplementaryTestOption);
+        pause(200);
 
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonArrowUp()throws InterruptedException{
+        driver.switchTo().parentFrame();
+        pause(500);
+        waitElements(buttonArrowUp);
+        click(buttonArrowUp);
+        System.out.println("Controlando aqui");
+        pause(200);
+        driver.switchTo().parentFrame();
+    }
+    public void verifyTest1IsDisplayed()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(categoryTest1);
+        isDisplayed(categoryTest1);
+        pause(1000);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonTests()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(buttonTests);
+        isDisplayed(buttonTests);
+        click(buttonTests);
+        pause(1000);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonCategoriesTests()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(buttonCategoriesTests);
+        isDisplayed(buttonCategoriesTests);
+        click(buttonCategoriesTests);
+        pause(3000);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonAddCategory()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(buttonAddCategory);
+        isDisplayed(buttonAddCategory);
+        click(buttonAddCategory);
+        pause(200);
+        driver.switchTo().parentFrame();
+    }
+
+    public void inputDataAddCategory()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        String name = "CategoryTest";
+        String description = "Qa test";
+
+        waitElements(inputNameAddCategory);
+        inputNameAddCategory.sendKeys(Keys.CONTROL + "a");
+        inputNameAddCategory.sendKeys(Keys.DELETE);
+        inputNameAddCategory.sendKeys(Keys.ENTER);
+        write(inputNameAddCategory,name);
+        pause(200);
+        waitElements(inputDescriptionAddCategory);
+        inputDescriptionAddCategory.sendKeys(Keys.CONTROL + "a");
+        inputDescriptionAddCategory.sendKeys(Keys.DELETE);
+        inputDescriptionAddCategory.sendKeys(Keys.ENTER);
+        write(inputDescriptionAddCategory,description);
+
+
+        driver.switchTo().parentFrame();
+    }
+    public void inputDataEditCategory()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        String name = "CategoryTest";
+        String description = "Test Modified";
+
+        waitElements(inputNameAddCategory);
+        inputNameAddCategory.sendKeys(Keys.CONTROL + "a");
+        inputNameAddCategory.sendKeys(Keys.DELETE);
+        inputNameAddCategory.sendKeys(Keys.ENTER);
+        write(inputNameAddCategory,name);
+        pause(200);
+        waitElements(inputDescriptionAddCategory);
+        inputDescriptionAddCategory.sendKeys(Keys.CONTROL + "a");
+        inputDescriptionAddCategory.sendKeys(Keys.DELETE);
+        inputDescriptionAddCategory.sendKeys(Keys.ENTER);
+        write(inputDescriptionAddCategory,description);
+
+
+        driver.switchTo().parentFrame();
+    }
+
+    public void inputDataEditedCategory()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        String name = "Test4";
+        String description = "Test Modified";
+
+        waitElements(inputNameAddCategory);
+        inputNameAddCategory.sendKeys(Keys.CONTROL + "a");
+        inputNameAddCategory.sendKeys(Keys.DELETE);
+        inputNameAddCategory.sendKeys(Keys.ENTER);
+        write(inputNameAddCategory,name);
+        pause(200);
+        waitElements(inputDescriptionAddCategory);
+        inputDescriptionAddCategory.sendKeys(Keys.CONTROL + "a");
+        inputDescriptionAddCategory.sendKeys(Keys.DELETE);
+        inputDescriptionAddCategory.sendKeys(Keys.ENTER);
+        write(inputDescriptionAddCategory,description);
+
+
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonCancelAddNewCategory()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(buttonCancelAddNewCategory);
+        isDisplayed(buttonCancelAddNewCategory);
+        click(buttonCancelAddNewCategory);
+        pause(1000);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonSaveAddNewCategory()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(buttonSaveAddNewCategory);
+        isDisplayed(buttonSaveAddNewCategory);
+        click(buttonSaveAddNewCategory);
+        pause(1500);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonSaveAddNewCategoryAcceptAlert()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(buttonSaveAddNewCategory);
+        isDisplayed(buttonSaveAddNewCategory);
+        click(buttonSaveAddNewCategory);
+        pause(1000);
+        driver.switchTo().alert().accept();
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonEditCategory()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(buttonEditCategory);
+        isDisplayed(buttonEditCategory);
+        click(buttonEditCategory);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonEditCategoryTest3()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(buttonEditCategoryTest3);
+        isDisplayed(buttonEditCategoryTest3);
+        click(buttonEditCategoryTest3);
+        pause(500);
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonDeleteCategory()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(buttonDeleteCategory);
+        isDisplayed(buttonDeleteCategory);
+        click(buttonDeleteCategory);
+        pause(200);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonDeleteCategoryAndCancel()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(buttonDeleteCategory);
+        isDisplayed(buttonDeleteCategory);
+        click(buttonDeleteCategory);
+        pause(2000);
+        driver.switchTo().alert().dismiss();
+        pause(1000);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonDeleteCategoryAndAccept()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(buttonDeleteCategory);
+        isDisplayed(buttonDeleteCategory);
+        click(buttonDeleteCategory);
+        pause(2000);
+        driver.switchTo().alert().accept();
+        pause(1000);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonDeleteCategoryAndDismiss()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(buttonDeleteCategory);
+        isDisplayed(buttonDeleteCategory);
+        click(buttonDeleteCategory);
+        pause(2000);
+        driver.switchTo().alert().dismiss();
+        pause(1000);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonDeleteCategoryTest1()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        waitElements(buttonDeleteTest1);
+        isDisplayed(buttonDeleteTest1);
+        click(buttonDeleteTest1);
+        pause(1500);
+        driver.switchTo().alert().accept();
+        pause(1500);
+        driver.switchTo().alert().accept();
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonAddTest()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        scrollToElementMove(buttonAddNewTest);
+        waitElements(buttonAddNewTest);
+        isDisplayed(buttonAddNewTest);
+        click(buttonAddNewTest);
+        pause(200);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonIncrease()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        scrollToElementMove(buttonIncrease);
+        waitElements(buttonIncrease);
+        pause(200);
+        click(buttonIncrease);
+        pause(300);
+        click(buttonIncrease);
+        pause(300);
+        click(buttonIncrease);
+        pause(300);
+        click(buttonIncrease);
+        pause(300);
+
+        driver.switchTo().parentFrame();
+    }
+
+    public void inputDataAddTest()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        String name = "ATestQA";
+        String description = "Qa test";
+        pause(300);
+
+        waitElements(inputNameAddTest);
+        inputNameAddTest.sendKeys(Keys.CONTROL + "a");
+        inputNameAddTest.sendKeys(Keys.DELETE);
+        inputNameAddTest.sendKeys(Keys.ENTER);
+        write(inputNameAddTest,name);
+        pause(200);
+        waitElements(inputDescriptionAddTest);
+        inputDescriptionAddTest.sendKeys(Keys.CONTROL + "a");
+        inputDescriptionAddTest.sendKeys(Keys.DELETE);
+        inputDescriptionAddTest.sendKeys(Keys.ENTER);
+        write(inputDescriptionAddTest,description);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonDeleteQaTestAndCancel()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        scrollToElementMove(buttonDeleteQaTest);
+        isDisplayed(buttonDeleteQaTest);
+        click(buttonDeleteQaTest);
+        pause(200);
+        driver.switchTo().alert().dismiss();
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonDeleteQaTestAndAccept()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        scrollToElementMove(buttonDeleteQaTest);
+        pause(200);
+        isDisplayed(buttonDeleteQaTest);
+        click(buttonDeleteQaTest);
+        pause(200);
+        driver.switchTo().alert().accept();
+        pause(500);
+        driver.switchTo().alert().accept();
+        driver.switchTo().parentFrame();
+    }
+
+    public void clickButtonEditTestSelected()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        isDisplayed(nameEditTest);
+        click(buttonEditTestSelected);
+        pause(300);
+        driver.switchTo().parentFrame();
+    }
+
+    public void inputDataEditTest()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        String name = "ATestQA Modified";
+        String description = "Test Modified";
+        pause(300);
+
+        waitElements(inputNameAddTest);
+        inputNameAddTest.sendKeys(Keys.CONTROL + "a");
+        inputNameAddTest.sendKeys(Keys.DELETE);
+        inputNameAddTest.sendKeys(Keys.ENTER);
+        write(inputNameAddTest,name);
+        pause(200);
+
+        waitElements(inputDescriptionTestSelected);
+        inputDescriptionTestSelected.sendKeys(Keys.CONTROL + "a");
+        inputDescriptionTestSelected.sendKeys(Keys.DELETE);
+        inputDescriptionTestSelected.sendKeys(Keys.ENTER);
+        write(inputDescriptionTestSelected,description);
+        pause(200);
+        driver.switchTo().parentFrame();
+    }
+
+    public void inputDataDoubletTest()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        String name = "Urodinámica";
+        String description = "Test Modified";
+        pause(300);
+
+        waitElements(inputNameAddTest);
+        inputNameAddTest.sendKeys(Keys.CONTROL + "a");
+        inputNameAddTest.sendKeys(Keys.DELETE);
+        inputNameAddTest.sendKeys(Keys.ENTER);
+        write(inputNameAddTest,name);
+        pause(200);
+
+        waitElements(inputDescriptionTestSelected);
+        inputDescriptionTestSelected.sendKeys(Keys.CONTROL + "a");
+        inputDescriptionTestSelected.sendKeys(Keys.DELETE);
+        inputDescriptionTestSelected.sendKeys(Keys.ENTER);
+        write(inputDescriptionTestSelected,description);
+        pause(200);
+        driver.switchTo().parentFrame();
+    }
+    public void clickButtonDropDownTestCategory()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        isDisplayed(dropDownTestCategory);
+        click(dropDownTestCategory);
+        pause(300);
+        waitElements(optionTestCategory);
+        click(optionTestCategory);
+        driver.switchTo().parentFrame();
+    }
+    public void dragAndDropFromLeft()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        dragAndDrop(citologiaExamination,areaDrop);
+        pause(2000);
+        driver.switchTo().parentFrame();
+    }
+
+    public void dragAndDropLeftToRight()throws InterruptedException{
+        driver.switchTo().frame("frmContenido");
+        pause(200);
+        dragAndDrop(citologiaInAreaDrop,citologiaExamination);
+        pause(2000);
+        driver.switchTo().parentFrame();
+    }
     @Override
     public boolean isAt() {
         return false;

@@ -301,6 +301,7 @@ public class AccessesPage extends BasePage<AccessesPage>{
         click(cancelButton);
         driver.switchTo().parentFrame();
         pause(2000);
+
     }
 
     public void clickPage2OfPreAssessment() throws InterruptedException {
@@ -442,6 +443,7 @@ public class AccessesPage extends BasePage<AccessesPage>{
         inputTextAreaPostTreatment.sendKeys(Keys.HOME);
         write(inputTextAreaPostTreatment,TextArea);
         driver.switchTo().parentFrame();
+
 
     }
     public void writeNumberPostTreatment(String Number){
@@ -647,6 +649,7 @@ public class AccessesPage extends BasePage<AccessesPage>{
         inputDateOfFirstUse.sendKeys(Keys.ENTER);
         write(inputDateOfFirstUse,FirstUse);
         driver.switchTo().parentFrame();
+
 
     }
 
